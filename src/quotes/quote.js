@@ -1,8 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect, setContent, response } from 'react';
 import './quote.css';
+export default Quote;
+
 
 function Quote() {
-    const axios = require('axios');
+    
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -10,7 +13,6 @@ function Quote() {
     // this useEffect will run once
     // similar to componentDidMount()    
     useEffect(() => {
-        fetch("https://api.example.com/items")
         axios({
             "method": "GET",
             "url": "https://quotes15.p.rapidapi.com/quotes/random/",
@@ -23,45 +25,32 @@ function Quote() {
                 "language_code": "en"
             }
         })
-            .then((response) => {
-                console.log(response)
-                setIsLoaded(true);
-                setContent(response.content);
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        // .then(res => res.json())
-        // .then(
-        //   (result) => {
-        //     setIsLoaded(true);
-        //     setItems(result.items);
-        //   },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        //   (error) => {
-        //     setIsLoaded(true);
-        //     setError(error);
-        //   }
-        //     )
-        // }, [])
+            .then(response => response.json())
+            .then(
+                (response) => {
+                    console.log(response)
+                    setIsLoaded(true);
+                    setContent(response.content);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                    console.log(error)
+                }
+            )
+    }, [])
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
+        return (
+            <div>
+                <h1>
+                    {response.content}
+                </h1>
+            </div>
 
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            return (
-                <div>
-                    <h1>
-                        {content}
-                    </h1>
-                </div>
-              
-            );
-        }
-    })
+        );
+    }
 }
-
-export default Quote;
