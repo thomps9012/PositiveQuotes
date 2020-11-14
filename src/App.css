@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  
 }
 
 html {
@@ -16,7 +17,8 @@ html {
   border: 1px rgb(145, 126, 126) solid;
   border-radius: 10px;
   text-align: right;
-  max-width: 35rem
+  max-width: 35rem;
+  margin-top: 25vh;
   
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './vibes.svg';
 import './App.css';
 import quotes from './QuotesDB';
 import QuoteAndAuthor from './QuoteAndAuthor';
