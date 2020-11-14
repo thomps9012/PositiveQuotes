@@ -1,61 +1,56 @@
 import React from 'react';
 import logo from './vibes.svg';
 import './App.css';
-import Button from 'react-bootstrap/Button';
+import quotes from './QuotesDB';
+import QuoteAndAuthor from './QuoteAndAuthor';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  Card from 'react-bootstrap/Card';
-import axios from '../src/util/api';
-
-
 
 
 class App extends React.Component {
- constructor(props) {
-   super(props);
-   this.state = {
-     quote: '',
-     author: ''
-   };
- }
-
- updateQuote = () => {
-  const quote = axios;
-  console.log(quote);
-
-   this.setState({
-    //  quote: results.data.content,
-    //  author: results.data.originator.name,
-   })
- }
-
-  render(){
-
-    return(
-
-      <div className="App">
-
-      <header className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Put some random positiveness in your day
-        </p>
-
-        <Button size="lg" variant="primary" onClick={this.updateQuote}>
-          Yes Please
-          </Button>
-          <Card>
-            <h1>{this.state.quote}</h1>
-            <h2>{this.state.author}</h2>
-          </Card>
-
-      </header>
-    </div>
-    );
+  constructor() {
+    super();
+    this.state = {
+      quote: quotes[0].quote,
+      author: quotes[0].author,
+    };
   }
 
+  randomQuote() {
+    const randomNumber = Math.floor(Math.random() * quotes.length);
+    return quotes[randomNumber];
+  }
+
+  shuffleQuotes(array) {
+    return array.sort(() => Math.random() - 0.5)
+  }
+
+  handleClick = () => {
+    const generateRandomQuote = this.randomQuote();
+    this.setState({
+      quote: generateRandomQuote.quote,
+      author: generateRandomQuote.author
+    });
+    this.shuffleQuotes(quotes)
+  };
+  randomColor() {
+    const color = `rgb(
+      ${Math.floor(Math.random() * 155)},
+      ${Math.floor(Math.random() * 155)},
+      ${Math.floor(Math.random() * 155)})`;
+    return color;
+  }
+
+  render() {
+    return (
+      <div>
+        <QuoteAndAuthor
+          displayColor={this.randomColor}
+          handleClick={this.handleClick}
+          {...this.state}
+          />
+      </div>
+    );
+  }
 }
 
 export default App;
-  
