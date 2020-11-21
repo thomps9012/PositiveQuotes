@@ -25,6 +25,7 @@ html {
 #quote {
   margin: 20px;
   text-align: left;
+  font-family: 'Texturina', serif;  
 }
 
 .fadeIn {
@@ -47,6 +48,8 @@ html {
 #author {
   margin: 20px;
   font-style: italic;
+  font-family: 'Texturina', serif; 
+
 }
 
 #newquote {
@@ -56,6 +59,9 @@ html {
   height: 35px;
   width: 100px;
   font-weight: 700;
-  font-family: "Segoe UI", "Tahoma", "Geneva", "Verdana", sans-serif;
+  
+font-family: 'Oxygen', sans-serif;
+
+
   color: white;
 }
