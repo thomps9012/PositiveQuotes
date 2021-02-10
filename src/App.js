@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      image: quotes[0].image,
       quote: quotes[0].quote,
       author: quotes[0].author,
     };
@@ -26,6 +27,7 @@ class App extends React.Component {
   handleClick = () => {
     const generateRandomQuote = this.randomQuote();
     this.setState({
+      image: generateRandomQuote.image,
       quote: generateRandomQuote.quote,
       author: generateRandomQuote.author
     });
@@ -41,7 +43,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="quoteBack">
         <QuoteAndAuthor
           displayColor={this.randomColor}
           handleClick={this.handleClick}

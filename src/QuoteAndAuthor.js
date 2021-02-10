@@ -7,11 +7,13 @@ class QuoteAndAuthor extends React.Component {
         html.style.backgroundColor = randomColor;
 
         return(
-            <div style={{ backgroundColor: 'white' }} className='quotebox'>
+            <div style={{ backgroundColor: randomColor }} className='quotebox'>
                 <div className='fadeIn'
                     key={Math.random()}
-                    style={{ color: randomColor }}
+                    style={{ color: 'white' }}
                     >
+                        <img id='image' src={this.props.image} alt=""></img>
+                        <br></br>
                         <h1 id='quote'>"{this.props.quote}"</h1>
                         <h5 id='author'>
                             -{this.props.author ? this.props.author : "Unknown"} -
@@ -24,6 +26,7 @@ class QuoteAndAuthor extends React.Component {
                         >
                             Quote Me! 
                         </button>
+                        <br></br>
             </div>
         );
     }

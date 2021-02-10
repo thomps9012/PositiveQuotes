@@ -8,24 +8,25 @@ html {
 }
 #root{
   width:80%;
-  margin: 0 10%;
+  margin: 0 0;
 }
 
 .quotebox {
   height: auto;
-  width: 100%;
-  border: 1px rgb(145, 126, 126) solid;
-  border-radius: 10px;
+  /* width: 100%; */
+  /* border: 1px rgb(145, 126, 126) solid; */
+  /* border-radius: 10px; */
   text-align: right;
-  max-width: 35rem;
-  margin-top: 25vh;
-  
+  width: 125%;
+  margin-top: 30vh;
+  /* background-color: #fff; */
 }
 
 #quote {
   margin: 20px;
-  text-align: left;
-  font-family: 'Texturina', serif;  
+  text-align: center;
+  font-family: 'Texturina', serif;
+    
 }
 
 .fadeIn {
@@ -48,15 +49,20 @@ html {
 #author {
   margin: 20px;
   font-style: italic;
-  font-family: 'Texturina', serif; 
+  font-family: 'Texturina', serif;
+  text-align: center;
 
 }
 
 #newquote {
   margin: 20px;
   position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
   border-radius: 5px;
-  height: 35px;
+  height: 45px;
   width: 100px;
   font-weight: 700;
   
@@ -64,4 +70,14 @@ font-family: 'Oxygen', sans-serif;
 
 
   color: white;
+}
+
+#image{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 50%;
+  height: 50vh;
 }
